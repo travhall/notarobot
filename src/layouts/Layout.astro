@@ -1,4 +1,7 @@
 ---
+import Themes from "astro-themes";
+import SiteHeader from "../components/SiteHeader.astro";
+
 interface Props {
   title: string;
 }
@@ -15,12 +18,21 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <Themes />
   </head>
-  <body>
+  <body class="bg-plum-50 dark:bg-plum-900 text-indigo-950 dark:text-indigo-50">
+    <SiteHeader />
     <slot />
   </body>
 </html>
 <style is:global>
+  @font-face {
+    font-family: "Handjet";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(/fonts/Handjet.woff2) format("woff2");
+  }
   @font-face {
     font-family: "Workbench";
     font-style: normal;
@@ -48,5 +60,103 @@ const { title } = Astro.props;
   }
   body {
     scroll-behavior: smooth;
+  }
+  iframe {
+    max-width: 100%;
+  }
+
+  .title-text {
+    color: #fff9d6;
+    text-shadow:
+      0px 0px 0 rgb(231, 231, 231),
+      0px 1px 0 rgb(216, 216, 216),
+      0px 2px 0 rgb(202, 202, 202),
+      0px 3px 0 rgb(187, 187, 187),
+      0px 4px 0 rgb(173, 173, 173),
+      0px 5px 0 rgb(158, 158, 158),
+      0px 6px 0 rgb(144, 144, 144),
+      0px 7px 6px rgba(0, 0, 0, 0.6),
+      0px 7px 1px rgba(0, 0, 0, 0.5),
+      0px 0px 6px rgba(0, 0, 0, 0.2);
+  }
+  .balloon {
+    width: 600px;
+    max-width: 100%;
+    padding: 15px;
+    position: relative;
+    box-shadow:
+      0 5px #fff,
+      0 10px #000,
+      0 -5px #fff,
+      0 -10px #000,
+      -5px 0 #fff,
+      -10px 0 #000,
+      5px 0 #fff,
+      10px 0 #000,
+      5px 5px #000,
+      -5px -5px #000,
+      -5px 5px #000,
+      5px -5px #000;
+  }
+
+  .balloon p {
+    word-wrap: break-word;
+  }
+
+  .balloon-right:after,
+  .balloon-left:after {
+    content: "";
+    position: absolute;
+    background: #000;
+    width: 5px;
+    height: 5px;
+  }
+
+  .balloon-left:after {
+    bottom: -15px;
+    left: 10%;
+    box-shadow:
+      5px -5px #fff,
+      10px -5px #fff,
+      15px -5px #fff,
+      20px -5px #fff,
+      25px -5px #fff,
+      0 5px #000,
+      -5px 10px #000,
+      -10px 15px #000,
+      -10px 20px #000,
+      -5px 20px #000,
+      0 20px #000,
+      5px 20px #000,
+      10px 20px #000,
+      15px 20px #000,
+      20px 15px #000,
+      25px 10px #000,
+      30px 5px #000,
+      30px 0 #000;
+  }
+
+  .balloon-right:after {
+    bottom: -15px;
+    right: 10%;
+    box-shadow:
+      5px -5px #fff,
+      10px -5px #fff,
+      15px -5px #fff,
+      20px -5px #fff,
+      25px -5px #fff,
+      0 5px #000,
+      5px 10px #000,
+      10px 15px #000,
+      15px 20px #000,
+      20px 20px #000,
+      25px 20px #000,
+      30px 20px #000,
+      35px 20px #000,
+      40px 20px #000,
+      40px 15px #000,
+      35px 10px #000,
+      30px 5px #000,
+      30px 0 #000;
   }
 </style>

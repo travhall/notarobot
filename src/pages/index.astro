@@ -1,24 +1,50 @@
 ---
+import { Image } from "astro:assets";
+import profileImage from "../assets/jamie-profile.png"
 import Layout from "../layouts/Layout.astro";
 
-let res = await fetch("https://not-a-robot.com//wp-json/wp/v2/posts");
+let res = await fetch(
+  "https://not-a-robot.com//wp-json/wp/v2/posts?_fields=id,title,slug,excerpt"
+);
 let posts = await res.json();
 ---
 
 <Layout title="Welcome to Not-A-Robot dot com">
-  <h1 class="font-serif text-6xl p-8">Not-A-Robot</h1>
-  <section class="p-8 prose lg:prose-xl">
+  <section class="flex flex-col xl:flex-row items-center justify-between">
+    <div class="p-8 flex flex-col w-full">
+      <h1
+        class="relative font-heading font-[240] text-8xl p-8 title-text"
+        data-text="Not-A-Robot"
+      >
+        &lbrace; Not-A-Robot &rbrace;
+      </h1>
+      <div class="balloon balloon-right self-end">
+        <h2>Hello, I&rsquo;m Not-A-Robot</h2>
+        <p>My name is Jamie Indigo, I&rsquo;m a technical SEO best known for taming unruly JavaScript frameworks like Angular and React. I&rsquo;m here to help websites share information with humans by improving how search engines crawl, render, and index.</p>
+      </div>
+    </div>
+    <Image
+      src={profileImage}
+      alt="Jamie Indigo, is clearly not a robot."
+      class="hidden"
+      loading="eager"
+      format="avif"
+    />
+  </section>
+  <section
+
+  >
     {
       posts.map((post: any) => (
-        <article>
+        <article class="p-8 prose prose-stone lg:prose-lg prose-img:max-w-full prose-img:rounded-xl prose-figure:max-w-full prose-code:break-all">
           <h2 class="text-2xl mb-8">
             <a
               href={`/posts/${post.slug}/`}
               set:html={post.title.rendered}
-              class="text-orange-500"
+              class="font-heading text-4xl font-light hover:font-extralight decoration-2 decoration-dotted hover:decoration-dashed underline-offset-4 transition-all"
             />
           </h2>
-          <Fragment set:html={post.content.rendered} />
+          <!-- <Fragment set:html={post.excerpt.rendered} /> -->
         </article>
       ))
     }

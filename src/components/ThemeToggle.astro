@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  class="hidden dark:block"
+  onclick="document.dispatchEvent(new CustomEvent('set-theme', { detail: 'light' }))"
+>
+  <span class="sr-only">Light Mode</span>
+  <Icon class="fill-zinc-50 h-6 w-6" name="pixelarticons:moon-stars" />
+</button>
+<button
+  class="block dark:hidden"
+  onclick="document.dispatchEvent(new CustomEvent('set-theme', { detail: 'dark' }))"
+>
+  <span class="sr-only">Dark Mode</span>
+  <Icon class="fill-zinc-950 h-6 w-6" name="pixelarticons:sun" />
+</button>

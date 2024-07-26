@@ -22,7 +22,9 @@ export async function getStaticPaths() {
 ---
 
 <Layout title={post.title.rendered}>
-  <article class="p-8">
+  <article
+    class="p-8 prose prose-stone dark:prose-invert prose-headings:font-heading prose-headings:font-normal prose-lead:font-sans prose-p:font-sans prose-a:decoration-dashed prose-a:underline-offset-4 prose-a:decoration-2 hover:prose-a:decoration-4 prose-a:text-magenta-700 prose-a:dark:text-magenta-200 lg:prose-lg xl:prose-xl 2xl:prose-2xl prose-img:max-w-full prose-img:rounded-xl prose-figure:max-w-full prose-code:break-all"
+  >
     <h1 set:html={post.title.rendered} class="text-2xl mb-8" />
     <Fragment set:html={post.content.rendered} />
   </article>
